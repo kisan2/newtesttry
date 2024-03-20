@@ -5,7 +5,7 @@ import { Roles } from 'src/decorator/Role.decorator';
 import { roles } from 'src/util/roles';
 import { CanAccess } from 'src/Guard/CanAccess.guard';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
-import { CompanyInfoDto } from './dto/createcompanyInfo.dto';
+import { CompanyInfoDto } from './dto/create_CompanyInfo.dto';
 import { FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/config/multer.config';
 import { createWalletDto } from './dto/createWallet.dto';
