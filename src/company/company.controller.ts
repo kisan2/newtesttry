@@ -7,7 +7,7 @@ import { CanAccess } from 'src/Guard/CanAccess.guard';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { CompanyInfoDto } from './dto/create_CompanyInfo.dto';
 import { FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';
-import { multerOptions } from 'src/config/multer.config';
+import { multerOptions } from '../config/multer_g.config';
 import { createWalletDto } from './dto/createWallet.dto';
 
 @Controller('company')

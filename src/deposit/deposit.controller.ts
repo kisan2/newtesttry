@@ -6,7 +6,7 @@ import { DepositService } from './deposit.service';
 import { CreateDepositDto } from './dto/create-deposit.dto';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerOptions } from 'src/config/multer.config';
+import { multerOptions } from '../config/multer_g.config';
 import { Roles } from 'src/decorator/Role.decorator';
 import { roles } from 'src/util/roles';
 import { CanAccess } from 'src/Guard/CanAccess.guard';

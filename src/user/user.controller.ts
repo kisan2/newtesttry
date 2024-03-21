@@ -5,7 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { UserLoginDto } from './dto/login-user.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
-import { multerOptions } from 'src/config/multer.config';
+import { multerOptions } from '../config/multer_g.config';
 import { CanAccess } from 'src/Guard/CanAccess.guard';
 import { Roles } from 'src/decorator/Role.decorator';
 import { roles } from 'src/util/roles';
