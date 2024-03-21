@@ -4,6 +4,7 @@ import { CompanyInfo } from './entities/CompanyBasicInfo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CompanyInfoDto } from './dto/create_CompanyInfo.dto';
+
 import { createWalletDto } from './dto/createWallet.dto';
 import { walletInfo } from './entities/wallet.entity';
 
@@ -72,44 +73,44 @@ export class CompanyService {
         }
     }
 
-    async addBasicInfo(files: { depositQr?: Express.Multer.File[], banner?: Express.Multer.File[], logo?: Express.Multer.File[] }, companyInfo: CompanyInfoDto) {
-        try {
-            const data = await this.companyRepo.find({})
-            if (data.length > 0) {
-                if (files) {
-                    if (files?.banner && files?.banner?.length > 0) {
-                        data[0].banner = files.banner[0].filename;
-                    }
-                    if (files?.logo && files?.logo.length > 0) {
-                        data[0].logo = files.logo[0].filename;
-                    }
-                }
-                Object.assign(data,companyInfo)
-                const result = await this.companyRepo.save(data)
-                if (!result) {
-                    throw new HttpException("cannot update data", HttpStatus.INTERNAL_SERVER_ERROR)
-                }
-                return { message: "update successfully" }
-            }
-            let banner: any;
-            let logo: any;
-            if (files) {
-                if (files?.banner && files?.banner?.length > 0) {
-                    banner = files.banner[0].filename;
-                }
-                if (files?.logo && files?.logo.length > 0) {
-                    logo = files.logo[0].filename;
-                }
-            }
+    // async addBasicInfo(files: { depositQr?: Express.Multer.File[], banner?: Express.Multer.File[], logo?: Express.Multer.File[] }, companyInfo: CompanyInfoDto) {
+    //     try {
+    //         const data = await this.companyRepo.find({})
+    //         if (data.length > 0) {
+    //             if (files) {
+    //                 if (files?.banner && files?.banner?.length > 0) {
+    //                     data[0].banner = files.banner[0].filename;
+    //                 }
+    //                 if (files?.logo && files?.logo.length > 0) {
+    //                     data[0].logo = files.logo[0].filename;
+    //                 }
+    //             }
+    //             Object.assign(data,companyInfo)
+    //             const result = await this.companyRepo.save(data)
+    //             if (!result) {
+    //                 throw new HttpException("cannot update data", HttpStatus.INTERNAL_SERVER_ERROR)
+    //             }
+    //             return { message: "update successfully" }
+    //         }
+    //         let banner: any;
+    //         let logo: any;
+    //         if (files) {
+    //             if (files?.banner && files?.banner?.length > 0) {
+    //                 banner = files.banner[0].filename;
+    //             }
+    //             if (files?.logo && files?.logo.length > 0) {
+    //                 logo = files.logo[0].filename;
+    //             }
+    //         }
 
-            const newCompany = this.companyRepo.create({ ...companyInfo, banner: banner, logo: logo })
+    //         const newCompany = this.companyRepo.create({ ...companyInfo, banner: banner, logo: logo })
 
-            const company = this.companyRepo.save(newCompany)
-            if (!company) {
-                throw new HttpException("cannot save data", HttpStatus.INTERNAL_SERVER_ERROR)
-            }
-        } catch (err) {
-            throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR)
-        }
-    }
+    //         const company = this.companyRepo.save(newCompany)
+    //         if (!company) {
+    //             throw new HttpException("cannot save data", HttpStatus.INTERNAL_SERVER_ERROR)
+    //         }
+    //     } catch (err) {
+    //         throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR)
+    //     }
+    // }
 }
