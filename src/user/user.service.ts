@@ -8,7 +8,7 @@ import * as bcrypt from 'bcrypt'
 import { User } from './entities/user.entity';
 import { UserLoginDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import { Amount } from 'src/Amount/entities/Amount.entities';
+import { Amount } from '../Amount/entities/Amount.entities';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 

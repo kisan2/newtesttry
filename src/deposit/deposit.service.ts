@@ -4,10 +4,10 @@ import { CreateDepositDto } from './dto/create-deposit.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Deposit } from './entities/deposit.entity';
 import { Equal, Repository } from 'typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import { UpdateDepositDto } from './dto/update-deposit.dto';
 import { QrDeposit } from './entities/qrdeposit.entity';
-import { status } from 'src/util/status';
+import { status } from '../util/status';
 
 @Injectable()
 export class DepositService {

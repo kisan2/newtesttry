@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { BaseEntity } from "src/entity/baseEntity";
-import { User } from "src/user/entities/user.entity";
+import { BaseEntity } from "../../entity/base_Entity";
+
+import { User } from "../../user/entities/user.entity";
 import { Column, Entity, ManyToOne } from "typeorm";
 
 @Entity()
@@ -27,7 +28,7 @@ export class Withdrawal extends BaseEntity{
     @Column({default:"pending"})
     status:string
 
-    @Column('longtext',{nullable:true})
+    @Column({nullable:true})
     statusReason:string
 
     @ManyToOne(()=>User,(user)=>user.withdrawal)

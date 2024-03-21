@@ -4,8 +4,8 @@ import { WithdrawalService } from './withdrawal.service';
 import { WithdrawalController } from './withdrawal.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Withdrawal } from './entities/withdrawal.entity';
-import { User } from 'src/user/entities/user.entity';
-import { Amount } from 'src/Amount/entities/Amount.entities';
+import { User } from '../user/entities/user.entity';
+import { Amount } from '../Amount/entities/Amount.entities';
 import { USDTWithdrawal } from './entities/usdtWithdrawal.entity';
 
 @Module({

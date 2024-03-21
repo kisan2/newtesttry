@@ -2,9 +2,9 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Post, Req, UseGuards, ValidationPipe } from '@nestjs/common';
 import { TradeService } from './trade.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { Roles } from 'src/decorator/Role.decorator';
-import { roles } from 'src/util/roles';
-import { CanAccess } from 'src/Guard/CanAccess.guard';
+import { Roles } from '../decorator/Role.decorator';
+import { roles } from '../util/roles';
+import { CanAccess } from '../Guard/CanAccess.guard';
 import { TimestampDto } from './dto/timestamp.dto';
 import { tradeDto } from './dto/trade.dto';
 import { Request } from 'express';

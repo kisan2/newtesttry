@@ -3,7 +3,8 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CompanyInfo } from './entities/CompanyBasicInfo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-// import { CompanyInfoDto } from './dto/createcompanyInfo.dto';
+import { CompanyInfoDto } from './dto/create_CompanyInfo.dto';
+
 import { createWalletDto } from './dto/createWallet.dto';
 import { walletInfo } from './entities/wallet.entity';
 

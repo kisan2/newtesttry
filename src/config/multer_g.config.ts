@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { diskStorage } from "multer"
-import { extname } from "path"
+import { extname, join } from "path"
 
 export const multerOptions =  {
     storage: diskStorage({
-      destination: 'src/uploads'
+      destination: join(__dirname, '..', 'uploads')
       , filename: (req, file, cb) => {
         // Generating a 32 random chars long string
         const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')

@@ -6,10 +6,9 @@ import { DepositService } from './deposit.service';
 import { CreateDepositDto } from './dto/create-deposit.dto';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerOptions } from 'src/config/multer.config';
-import { Roles } from 'src/decorator/Role.decorator';
-import { roles } from 'src/util/roles';
-import { CanAccess } from 'src/Guard/CanAccess.guard';
+import { Roles } from '../decorator/Role.decorator';
+import { roles } from '../util/roles';
+import { CanAccess } from '../Guard/CanAccess.guard';
 import { UpdateDepositDto } from './dto/update-deposit.dto';
 import { CreateQrDepositDto } from './dto/qrdeposit.dto';
 // import { QrDeposit } from './entities/qrdeposit.entity';
@@ -24,19 +23,19 @@ export class DepositController {
   constructor(private readonly depositService: DepositService) {}
 
   //add deposit information
-  @Post()
-  @ApiBody({type:CreateDepositDto})
-  @ApiConsumes('multipart/form-data')
-  @UseInterceptors(FileInterceptor('receipt',multerOptions))
-  @Roles(roles.user)
-  @UseGuards(CanAccess)
-  async addDepositInfo(@Req() req:Request,@UploadedFile() receipt:Express.Multer.File,@Body(new ValidationPipe()) createDepositDto: CreateDepositDto) {
-    try{
-     return await this.depositService.addDepositInfo(req,receipt,createDepositDto)
-    }catch(err){
-      throw new HttpException(err,HttpStatus.INTERNAL_SERVER_ERROR)
-    }
-  }
+  // @Post()
+  // @ApiBody({type:CreateDepositDto})
+  // @ApiConsumes('multipart/form-data')
+  // @UseInterceptors(FileInterceptor('receipt',multerOptions))
+  // @Roles(roles.user)
+  // @UseGuards(CanAccess)
+  // async addDepositInfo(@Req() req:Request,@UploadedFile() receipt:Express.Multer.File,@Body(new ValidationPipe()) createDepositDto: CreateDepositDto) {
+  //   try{
+  //    return await this.depositService.addDepositInfo(req,receipt,createDepositDto)
+  //   }catch(err){
+  //     throw new HttpException(err,HttpStatus.INTERNAL_SERVER_ERROR)
+  //   }
+  // }
   
   //get all deposit data
   @Get()
@@ -51,20 +50,20 @@ export class DepositController {
     }
   }
   // request deposit form QR
-  @Post("qrreceipt")
-  @Roles(roles.user)
-  @UseGuards(CanAccess)
-  @ApiBearerAuth("jwt")
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({type:CreateQrDepositDto})
-  @UseInterceptors(FileInterceptor('receipt',multerOptions))
-  async addQrDeposit(@Req() req:Request,@UploadedFile() receipt:Express.Multer.File){
-    try{
-      return await this.depositService.addQrDeposit(req,receipt)
-    }catch(err){
-      throw new HttpException(err,HttpStatus.INTERNAL_SERVER_ERROR)
-    }
-  }
+  // @Post("qrreceipt")
+  // @Roles(roles.user)
+  // @UseGuards(CanAccess)
+  // @ApiBearerAuth("jwt")
+  // @ApiConsumes('multipart/form-data')
+  // @ApiBody({type:CreateQrDepositDto})
+  // @UseInterceptors(FileInterceptor('receipt',multerOptions))
+  // async addQrDeposit(@Req() req:Request,@UploadedFile() receipt:Express.Multer.File){
+  //   try{
+  //     return await this.depositService.addQrDeposit(req,receipt)
+  //   }catch(err){
+  //     throw new HttpException(err,HttpStatus.INTERNAL_SERVER_ERROR)
+  //   }
+  // }
 
   @Patch("changeBankDepositStatus/:id")
   @Roles(roles.admin)

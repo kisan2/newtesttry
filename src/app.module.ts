@@ -21,7 +21,7 @@ import { CompanyModule } from './company/company.module';
     DatabaseConnection,
     ConfigModule.forRoot({isGlobal:true}),
     JwtModule.register({
-      secret:process.env.JWTSECRET,
+      secret:"sdfksfksjhdfkshdkfskhfdkskdfksjhdf",
       global:true,
       signOptions:{
           expiresIn:"1d"

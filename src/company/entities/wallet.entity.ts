@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { BaseEntity } from "src/entity/baseEntity";
+import { BaseEntity } from "../../entity/base_Entity";
+
 import { Column, Entity } from "typeorm";
 
 @Entity()

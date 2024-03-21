@@ -6,30 +6,23 @@ import { User } from '../user/entities/user.entity';
 import { Withdrawal } from '../withdrawal/entities/withdrawal.entity';
 import { Deposit } from '../deposit/entities/deposit.entity';
 import { ConfigService } from '@nestjs/config';
-import { Trade } from 'src/trade/entities/trade.entities';
-import { Amount } from 'src/Amount/entities/Amount.entities';
-import { timestamprate } from 'src/entity/timestamprate';
-import { QrDeposit } from 'src/deposit/entities/qrdeposit.entity';
-import { CompanyInfo } from 'src/company/entities/CompanyBasicInfo.entity';
-import { walletInfo } from 'src/company/entities/wallet.entity';
-import { USDTWithdrawal } from 'src/withdrawal/entities/usdtWithdrawal.entity';
+import { Trade } from '../trade/entities/trade.entities';
+import { Amount } from '../Amount/entities/Amount.entities';
+import { timestamprate } from '../entity/time_stamprate';
+import { QrDeposit } from '../deposit/entities/qrdeposit.entity';
+import { CompanyInfo } from '../company/entities/CompanyBasicInfo.entity';
+import { walletInfo } from '../company/entities/wallet.entity';
+import { USDTWithdrawal } from '../withdrawal/entities/usdtWithdrawal.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      inject:[ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: "mysql",
-        host: "yh3.domaininnepal.com",
-        port: configService.get<number>('DATABASE_PORT'),
-        username: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
+    TypeOrmModule.forRoot({
+        type: 'postgres',
+        url:"postgres://default:0zSdkW2qoKHt@ep-weathered-silence-a4d0u2v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+        synchronize:true,
+        logging:true,
         entities: [Admin,User,Withdrawal,Deposit,Amount,Trade,timestamprate,QrDeposit,CompanyInfo,walletInfo,USDTWithdrawal],
-        synchronize: true,
         autoLoadEntities: true,
-        logging: false,
-      }),
     }),
   ],
 })

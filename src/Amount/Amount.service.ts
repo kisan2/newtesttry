@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Amount } from './entities/Amount.entities';
 import { Equal, Repository} from 'typeorm';
 import { AmountDto } from './dto/Amount.dto';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class AmountService {
