@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { BaseEntity } from "src/entity/baseEntity";
+import { BaseEntity } from "../../entity/base_Entity";
+
 import { User } from "src/user/entities/user.entity";
 import { Column, Entity, ManyToOne } from "typeorm";
 

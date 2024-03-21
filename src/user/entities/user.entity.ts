@@ -2,7 +2,7 @@
 import { Amount } from "src/Amount/entities/Amount.entities";
 import { Deposit } from "src/deposit/entities/deposit.entity";
 import { QrDeposit } from "src/deposit/entities/qrdeposit.entity";
-import { BaseEntity } from "src/entity/baseEntity";
+import { BaseEntity } from "../../entity/base_Entity";
 import { Trade } from "src/trade/entities/trade.entities";
 import { USDTWithdrawal } from "src/withdrawal/entities/usdtWithdrawal.entity";
 import { Withdrawal } from "src/withdrawal/entities/withdrawal.entity";
