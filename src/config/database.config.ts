@@ -8,7 +8,7 @@ import { Deposit } from '../deposit/entities/deposit.entity';
 import { ConfigService } from '@nestjs/config';
 import { Trade } from 'src/trade/entities/trade.entities';
 import { Amount } from 'src/Amount/entities/Amount.entities';
-import { timestamprate } from 'src/entity/timestamprate';
+import { timestamprate } from 'src/entity/time_stamprate';
 import { QrDeposit } from 'src/deposit/entities/qrdeposit.entity';
 import { CompanyInfo } from 'src/company/entities/CompanyBasicInfo.entity';
 import { walletInfo } from 'src/company/entities/wallet.entity';

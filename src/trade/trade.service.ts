@@ -2,7 +2,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { TimestampDto } from './dto/timestamp.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { timestamprate } from 'src/entity/timestamprate';
+import { timestamprate } from 'src/entity/time_stamprate';
 import { Equal, Repository } from 'typeorm';
 import { tradeDto } from './dto/trade.dto';
 import { Amount } from 'src/Amount/entities/Amount.entities';
