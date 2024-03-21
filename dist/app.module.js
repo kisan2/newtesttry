@@ -32,7 +32,7 @@ exports.AppModule = AppModule = __decorate([
             database_config_1.DatabaseConnection,
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             jwt_1.JwtModule.register({
-                secret: "sdfksfksjhdfkshdkfskhfdkskdfksjhdf",
+                secret: process.env.JWTSECRET,
                 global: true,
                 signOptions: {
                     expiresIn: "1d"
