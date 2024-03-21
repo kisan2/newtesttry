@@ -13,7 +13,6 @@ const admin_entity_1 = require("../admin/entities/admin.entity");
 const user_entity_1 = require("../user/entities/user.entity");
 const withdrawal_entity_1 = require("../withdrawal/entities/withdrawal.entity");
 const deposit_entity_1 = require("../deposit/entities/deposit.entity");
-const config_1 = require("@nestjs/config");
 const trade_entities_1 = require("../trade/entities/trade.entities");
 const Amount_entities_1 = require("../Amount/entities/Amount.entities");
 const time_stamprate_1 = require("../entity/time_stamprate");
@@ -27,20 +26,13 @@ exports.DatabaseConnection = DatabaseConnection;
 exports.DatabaseConnection = DatabaseConnection = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forRootAsync({
-                inject: [config_1.ConfigService],
-                useFactory: (configService) => ({
-                    type: "mysql",
-                    host: "yh3.domaininnepal.com",
-                    port: 3306,
-                    username: "hubitcom_tushar",
-                    password: "Tushar12345",
-                    database: "hubitcom_crypto",
-                    entities: [admin_entity_1.Admin, user_entity_1.User, withdrawal_entity_1.Withdrawal, deposit_entity_1.Deposit, Amount_entities_1.Amount, trade_entities_1.Trade, time_stamprate_1.timestamprate, qrdeposit_entity_1.QrDeposit, CompanyBasicInfo_entity_1.CompanyInfo, wallet_entity_1.walletInfo, usdtWithdrawal_entity_1.USDTWithdrawal],
-                    synchronize: true,
-                    autoLoadEntities: true,
-                    logging: false,
-                }),
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                url: "postgres://default:0zSdkW2qoKHt@ep-weathered-silence-a4d0u2v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+                synchronize: true,
+                logging: true,
+                entities: [admin_entity_1.Admin, user_entity_1.User, withdrawal_entity_1.Withdrawal, deposit_entity_1.Deposit, Amount_entities_1.Amount, trade_entities_1.Trade, time_stamprate_1.timestamprate, qrdeposit_entity_1.QrDeposit, CompanyBasicInfo_entity_1.CompanyInfo, wallet_entity_1.walletInfo, usdtWithdrawal_entity_1.USDTWithdrawal],
+                autoLoadEntities: true,
             }),
         ],
     })

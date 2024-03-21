@@ -16,20 +16,13 @@ import { USDTWithdrawal } from '../withdrawal/entities/usdtWithdrawal.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      inject:[ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: "mysql",
-        host: "yh3.domaininnepal.com",
-        port: 3306,
-        username: "hubitcom_tushar",
-        password: "Tushar12345",
-        database: "hubitcom_crypto",
+    TypeOrmModule.forRoot({
+        type: 'postgres',
+        url:"postgres://default:0zSdkW2qoKHt@ep-weathered-silence-a4d0u2v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+        synchronize:true,
+        logging:true,
         entities: [Admin,User,Withdrawal,Deposit,Amount,Trade,timestamprate,QrDeposit,CompanyInfo,walletInfo,USDTWithdrawal],
-        synchronize: true,
         autoLoadEntities: true,
-        logging: false,
-      }),
     }),
   ],
 })

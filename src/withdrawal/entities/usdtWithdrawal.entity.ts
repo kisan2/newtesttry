@@ -21,7 +21,7 @@ export class USDTWithdrawal extends BaseEntity{
     @Column({default:"pending"})
     status:string
 
-    @Column('longtext',{nullable:true})
+    @Column({nullable:true})
     statusReason:string
 
     @ManyToOne(()=>User,(user)=>user.USDTwithdrawal)
