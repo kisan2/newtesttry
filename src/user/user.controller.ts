@@ -5,7 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { UserLoginDto } from './dto/login-user.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
-import { multerOptions } from '../config/multer_g.config';
 import { CanAccess } from '../Guard/CanAccess.guard';
 import { Roles } from '../decorator/Role.decorator';
 import { roles } from '../util/roles';
@@ -17,23 +16,23 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
   //signup for user
-  @Post('signup')
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    type: CreateUserDto,
-  })
-  @UseInterceptors(FileFieldsInterceptor([
-    { name: 'validId', maxCount: 1 },
-    { name: 'profile', maxCount: 1 }
-  ],multerOptions))
-  async signup(@UploadedFiles() files: { validId?: Express.Multer.File[],profile?: Express.Multer.File[] },@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
-    try {
-      return await this.userService.signup(files,createUserDto);
+  // @Post('signup')
+  // @ApiConsumes('multipart/form-data')
+  // @ApiBody({
+  //   type: CreateUserDto,
+  // })
+  // @UseInterceptors(FileFieldsInterceptor([
+  //   { name: 'validId', maxCount: 1 },
+  //   { name: 'profile', maxCount: 1 }
+  // ],multerOptions))
+  // async signup(@UploadedFiles() files: { validId?: Express.Multer.File[],profile?: Express.Multer.File[] },@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
+  //   try {
+  //     return await this.userService.signup(files,createUserDto);
       
-    } catch (err) {
-      throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
+  //   } catch (err) {
+  //     throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR);
+  //   }
+  // }
 
   //login for user
   @Post("/login")
@@ -114,25 +113,25 @@ export class UserController {
 
 
   //update user by id
-  @Patch(':id')
-  @ApiBearerAuth("jwt")
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    type: UpdateUserDto,
-  })
-  @UseInterceptors(FileFieldsInterceptor([
-    { name: 'validId', maxCount: 1 },
-    { name: 'profile', maxCount: 1 },
-  ],multerOptions))
-  @UseGuards(CanAccess)
-  @Roles(roles.user,roles.admin)
-  async updateUserById(@UploadedFiles() files: { validId?: Express.Multer.File[], profile?: Express.Multer.File[] },@Param('id', ParseUUIDPipe) id: string, @Body() updateUserDto: CreateUserDto) {
-    try {
-      return  await this.userService.updateUserById(files,id, updateUserDto);
-    } catch (err) {
-      throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR)
-    }
-  }
+  // @Patch(':id')
+  // @ApiBearerAuth("jwt")
+  // @ApiConsumes('multipart/form-data')
+  // @ApiBody({
+  //   type: UpdateUserDto,
+  // })
+  // @UseInterceptors(FileFieldsInterceptor([
+  //   { name: 'validId', maxCount: 1 },
+  //   { name: 'profile', maxCount: 1 },
+  // ],multerOptions))
+  // @UseGuards(CanAccess)
+  // @Roles(roles.user,roles.admin)
+  // async updateUserById(@UploadedFiles() files: { validId?: Express.Multer.File[], profile?: Express.Multer.File[] },@Param('id', ParseUUIDPipe) id: string, @Body() updateUserDto: CreateUserDto) {
+  //   try {
+  //     return  await this.userService.updateUserById(files,id, updateUserDto);
+  //   } catch (err) {
+  //     throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR)
+  //   }
+  // }
 
   //delete user by id
   @Delete(':id')
