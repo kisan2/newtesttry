@@ -6,9 +6,9 @@ import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { UserLoginDto } from './dto/login-user.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from '../config/multer_g.config';
-import { CanAccess } from 'src/Guard/CanAccess.guard';
-import { Roles } from 'src/decorator/Role.decorator';
-import { roles } from 'src/util/roles';
+import { CanAccess } from '../Guard/CanAccess.guard';
+import { Roles } from '../decorator/Role.decorator';
+import { roles } from '../util/roles';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')

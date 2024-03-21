@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Get, HttpException, HttpStatus, Post, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, ValidationPipe } from '@nestjs/common';
 import { CompanyService } from './company.service';
-import { Roles } from 'src/decorator/Role.decorator';
-import { roles } from 'src/util/roles';
-import { CanAccess } from 'src/Guard/CanAccess.guard';
+import { Roles } from '../decorator/Role.decorator';
+import { roles } from '../util/roles';
+import { CanAccess } from '../Guard/CanAccess.guard';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { CompanyInfoDto } from './dto/create_CompanyInfo.dto';
 import { FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';

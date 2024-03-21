@@ -6,13 +6,13 @@ import { User } from '../user/entities/user.entity';
 import { Withdrawal } from '../withdrawal/entities/withdrawal.entity';
 import { Deposit } from '../deposit/entities/deposit.entity';
 import { ConfigService } from '@nestjs/config';
-import { Trade } from 'src/trade/entities/trade.entities';
-import { Amount } from 'src/Amount/entities/Amount.entities';
+import { Trade } from '../trade/entities/trade.entities';
+import { Amount } from '../Amount/entities/Amount.entities';
 import { timestamprate } from '../entity/time_stamprate';
-import { QrDeposit } from 'src/deposit/entities/qrdeposit.entity';
-import { CompanyInfo } from 'src/company/entities/CompanyBasicInfo.entity';
-import { walletInfo } from 'src/company/entities/wallet.entity';
-import { USDTWithdrawal } from 'src/withdrawal/entities/usdtWithdrawal.entity';
+import { QrDeposit } from '../deposit/entities/qrdeposit.entity';
+import { CompanyInfo } from '../company/entities/CompanyBasicInfo.entity';
+import { walletInfo } from '../company/entities/wallet.entity';
+import { USDTWithdrawal } from '../withdrawal/entities/usdtWithdrawal.entity';
 
 @Module({
   imports: [

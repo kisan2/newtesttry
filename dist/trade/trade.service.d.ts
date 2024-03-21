@@ -2,8 +2,8 @@ import { TimestampDto } from './dto/timestamp.dto';
 import { timestamprate } from '../entity/time_stamprate';
 import { Repository } from 'typeorm';
 import { tradeDto } from './dto/trade.dto';
-import { Amount } from 'src/Amount/entities/Amount.entities';
-import { User } from 'src/user/entities/user.entity';
+import { Amount } from '../Amount/entities/Amount.entities';
+import { User } from '../user/entities/user.entity';
 import { Trade } from './entities/trade.entities';
 export declare class TradeService {
     private timestampRepo;

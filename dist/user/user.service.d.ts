@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { UserLoginDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import { Amount } from 'src/Amount/entities/Amount.entities';
+import { Amount } from '../Amount/entities/Amount.entities';
 import { Cache } from 'cache-manager';
 export declare class UserService {
     private userRepo;

@@ -1,5 +1,5 @@
+import { User } from "../../user/entities/user.entity";
 import { BaseEntity } from "../../entity/base_Entity";
-import { User } from "src/user/entities/user.entity";
 export declare class Deposit extends BaseEntity {
     amount: string;
     bankName: string;

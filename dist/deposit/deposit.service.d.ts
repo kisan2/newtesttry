@@ -2,7 +2,7 @@
 import { CreateDepositDto } from './dto/create-deposit.dto';
 import { Deposit } from './entities/deposit.entity';
 import { Repository } from 'typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import { UpdateDepositDto } from './dto/update-deposit.dto';
 import { QrDeposit } from './entities/qrdeposit.entity';
 export declare class DepositService {

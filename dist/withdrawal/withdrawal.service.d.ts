@@ -1,9 +1,9 @@
 import { CreateWithdrawalDto } from './dto/create-withdrawal.dto';
 import { Withdrawal } from './entities/withdrawal.entity';
 import { Repository } from 'typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import { UpdateWithdrawalDto } from './dto/update-withdrawal.dto';
-import { Amount } from 'src/Amount/entities/Amount.entities';
+import { Amount } from '../Amount/entities/Amount.entities';
 import { USDTWithdrawal } from './entities/usdtWithdrawal.entity';
 import { UpdateUSDTWithdrawalDto } from './dto/updateUSDTwithdrawal.dto';
 import { CreateUSDTWithdrawalDto } from './dto/createUSDTwithdrawal.dto';

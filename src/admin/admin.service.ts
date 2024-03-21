@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt';
 import { changePassword } from './dto/ChangeAdminPassword.dto';
-import { roles } from 'src/util/roles';
+import { roles } from '../util/roles';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 

@@ -3,9 +3,9 @@ import { Body, Controller, HttpException, HttpStatus, Patch, UseGuards, Validati
 
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { AmountDto } from './dto/Amount.dto';
-import { Roles } from 'src/decorator/Role.decorator';
-import { roles } from 'src/util/roles';
-import { CanAccess } from 'src/Guard/CanAccess.guard';
+import { Roles } from '../decorator/Role.decorator';
+import { roles } from '../util/roles';
+import { CanAccess } from '../Guard/CanAccess.guard';
 import { AmountService } from './Amount.service';
 
 @Controller('Amount')
