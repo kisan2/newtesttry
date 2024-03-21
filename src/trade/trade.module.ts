@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { TradeService } from './trade.service';
 import { TradeController } from './trade.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { timestamprate } from 'src/entity/time_stamprate';
+import { timestamprate } from '../entity/time_stamprate';
 import { Amount } from 'src/Amount/entities/Amount.entities';
 import { User } from 'src/user/entities/user.entity';
 import { Trade } from './entities/trade.entities';
