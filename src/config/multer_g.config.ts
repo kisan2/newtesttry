@@ -4,7 +4,7 @@ import { extname, join } from "path"
 
 export const multerOptions =  {
     storage: diskStorage({
-      destination: join(__dirname, '..', 'assest')
+      destination: join(__dirname, '..', 'uploads')
       , filename: (req, file, cb) => {
         // Generating a 32 random chars long string
         const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
