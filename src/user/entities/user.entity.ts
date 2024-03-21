@@ -35,7 +35,7 @@ export class User extends BaseEntity{
     @Column()
     profile:string
 
-    @Column()
+    @Column({nullable:true})
     address:string
 
     @Column({nullable:true})
