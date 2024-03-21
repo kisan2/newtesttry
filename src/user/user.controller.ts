@@ -9,6 +9,7 @@ import { CanAccess } from '../Guard/CanAccess.guard';
 import { Roles } from '../decorator/Role.decorator';
 import { roles } from '../util/roles';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { multerOptions } from '../config/multer_g.config';
 
 @Controller('user')
 @ApiTags("user")
@@ -16,23 +17,23 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
   //signup for user
-  // @Post('signup')
-  // @ApiConsumes('multipart/form-data')
-  // @ApiBody({
-  //   type: CreateUserDto,
-  // })
-  // @UseInterceptors(FileFieldsInterceptor([
-  //   { name: 'validId', maxCount: 1 },
-  //   { name: 'profile', maxCount: 1 }
-  // ],multerOptions))
-  // async signup(@UploadedFiles() files: { validId?: Express.Multer.File[],profile?: Express.Multer.File[] },@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
-  //   try {
-  //     return await this.userService.signup(files,createUserDto);
+  @Post('signup')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    type: CreateUserDto,
+  })
+  @UseInterceptors(FileFieldsInterceptor([
+    { name: 'validId', maxCount: 1 },
+    { name: 'profile', maxCount: 1 }
+  ],multerOptions))
+  async signup(@UploadedFiles() files: { validId?: Express.Multer.File[],profile?: Express.Multer.File[] },@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
+    try {
+      return await this.userService.signup(files,createUserDto);
       
-  //   } catch (err) {
-  //     throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR);
-  //   }
-  // }
+    } catch (err) {
+      throw new HttpException(err, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
 
   //login for user
   @Post("/login")
