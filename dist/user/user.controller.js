@@ -15,14 +15,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
+const create_user_dto_1 = require("./dto/create-user.dto");
 const swagger_1 = require("@nestjs/swagger");
 const login_user_dto_1 = require("./dto/login-user.dto");
+const platform_express_1 = require("@nestjs/platform-express");
 const CanAccess_guard_1 = require("../Guard/CanAccess.guard");
 const Role_decorator_1 = require("../decorator/Role.decorator");
 const roles_1 = require("../util/roles");
+const multer_g_config_1 = require("../config/multer_g.config");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
+    }
+    async signup(files, createUserDto) {
+        try {
+            return await this.userService.signup(files, createUserDto);
+        }
+        catch (err) {
+            throw new common_1.HttpException(err, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     async userlogin(userDto) {
         try {
@@ -82,6 +93,22 @@ let UserController = class UserController {
     }
 };
 exports.UserController = UserController;
+__decorate([
+    (0, common_1.Post)('signup'),
+    (0, swagger_1.ApiConsumes)('multipart/form-data'),
+    (0, swagger_1.ApiBody)({
+        type: create_user_dto_1.CreateUserDto,
+    }),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileFieldsInterceptor)([
+        { name: 'validId', maxCount: 1 },
+        { name: 'profile', maxCount: 1 }
+    ], multer_g_config_1.multerOptions)),
+    __param(0, (0, common_1.UploadedFiles)()),
+    __param(1, (0, common_1.Body)(new common_1.ValidationPipe())),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, create_user_dto_1.CreateUserDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "signup", null);
 __decorate([
     (0, common_1.Post)("/login"),
     __param(0, (0, common_1.Body)(new common_1.ValidationPipe())),
